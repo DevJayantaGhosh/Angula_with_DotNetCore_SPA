@@ -1,0 +1,80 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <div *ngFor="let item of errorArray">
+
+              <p class="text-danger">{{item}}</p>
+            </div>
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+            <form method="post" (ngSubmit)="Register()">
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="text" id="firstName" class="form-control form-control-lg" [(ngModel)]="MyUserName"
+                      name="MyUserName" required autofocus #Uname="ngModel" />
+                    <label class="form-label" for="firstName">User Name</label>
+
+                    <div *ngIf="Uname.touched && Uname.errors" class="text-danger">
+                      <span *ngIf="Uname.hasError('required')">UserName is required.</span>
+                      <span *ngIf="Uname.hasError('maxlength')">Only 10 characters allowed for
+                        UserName.</span>
+                      <span *ngIf="Uname.hasError('minlength')">Atleast 5 characters needed for
+                        UserName.</span>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <input type="password" id="lastName" class="form-control form-control-lg" [(ngModel)]="MyPassword"
+                      name="MyPassword" required autofocus #pwd="ngModel" />
+                    <label class="form-label" for="lastName">Password</label>
+
+                    <div *ngIf="pwd.touched && pwd.errors" class="text-danger">
+                      <span *ngIf="pwd.hasError('required')">Password is required.</span>
+                      <span *ngIf="pwd.hasError('maxlength')">Only 10 characters allowed for password.</span>
+                      <span *ngIf="pwd.hasError('minlength')">Atleast 5 characters needed for
+                        password.</span>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="email" id="emailAddress" class="form-control form-control-lg" [(ngModel)]="MyEmail"
+                      name="MyEmail" />
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="mt-4 pt-2">
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

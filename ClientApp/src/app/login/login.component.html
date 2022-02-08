@@ -1,0 +1,63 @@
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <form method="post" (ngSubmit)="onSubmit()">
+                            <h3 class="mb-5">Sign in {{MyUserName }} and {{MyPassword}}</h3>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="typeEmailX-2">User Name</label>
+                                <input type="text" id="typeEmailX-2" class="form-control form-control-lg"
+                                    [(ngModel)]="MyUserName" name="MyUserName" required autofocus #Uname="ngModel" />
+
+                                <div *ngIf="Uname.touched && Uname.errors" class="text-danger">
+                                    <span *ngIf="Uname.hasError('required')">UserName is required.</span>
+                                    <span *ngIf="Uname.hasError('maxlength')">Only 10 characters allowed for
+                                        UserName.</span>
+                                    <span *ngIf="Uname.hasError('minlength')">Atleast 5 characters needed for
+                                        UserName.</span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="typePasswordX-2">Password</label>
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
+                                    [(ngModel)]="MyPassword" name="MyPassword"  required autofocus #pwd="ngModel" />
+
+                                     <div *ngIf="pwd.touched && pwd.errors" class="text-danger">
+                                        <span *ngIf="pwd.hasError('required')">Password is required.</span>
+                                        <span *ngIf="pwd.hasError('maxlength')">Only 10 characters allowed for password.</span>
+                                        <span *ngIf="pwd.hasError('minlength')">Atleast 5 characters needed for
+                                            password.</span>
+                                        </div>
+                            </div>
+                            
+
+                            <!-- Checkbox -->
+                            <div class="form-check d-flex justify-content-start mb-4">
+                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                                <label class="form-check-label" for="form1Example3"> Remember password </label>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    {
+	"username":"AJay@123456",
+	"password":"Jaya@123456"
+
+}
+//use JWT-decode 
+-->

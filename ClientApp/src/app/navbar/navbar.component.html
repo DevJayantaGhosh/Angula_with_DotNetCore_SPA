@@ -1,0 +1,54 @@
+<header>
+    <nav class="navbar gradient-custom  navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom ">
+
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Kirane Ki Dookan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-2">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" [routerLink]='["/state"]'>State</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" [routerLink]='["/"]'
+                        *ngIf="(UserName$ | async) as MyUserName ">{{MyUserName}}</a>
+                </li>
+                <li class="nav-item" *ngIf="(loginStatus$ | async) as loginStatus">
+                    <a class="nav-link text-dark" [routerLink]='["/product/list"]' *ngIf="loginStatus">Products</a>
+                </li>
+                <li class="nav-item" *ngIf="!(loginStatus$ | async) as isLoggedin">
+                    <a class="nav-link text-dark" *ngIf="isLoggedin" [routerLink]='["/login"]'>Login</a>
+                </li>
+                <li class="nav-item" *ngIf="!(loginStatus$ | async) as isLoggedin">
+                    <a class="nav-link text-dark" *ngIf="isLoggedin" [routerLink]='["/register"]'>Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger"></a>
+                </li>
+                <li class="nav-item" *ngIf="(loginStatus$ | async) as LoginStatus">
+                    <button class="btn btn-primary text-white" *ngIf="LoginStatus" (click)="logout()">Logout</button>
+                </li>
+
+                <li class="nav-item">
+                    Status {{loginStatus$ | async}}
+                </li>
+                <li class="nav-item">
+                    UserName {{UserName$ | async}}
+                </li>
+                <li class="nav-item">
+                    Role {{Role$ | async}}
+                </li>
+
+            </ul>
+
+
+
+        </div>
+
+    </nav>
+</header>
